@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  pid-r:
+    image: pid-r
+    build:
+      context: .\PID-r
+      dockerfile: Dockerfile
