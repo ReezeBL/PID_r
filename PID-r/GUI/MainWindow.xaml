@@ -1,0 +1,27 @@
+﻿<Window x:Class="PID_r.GUI.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewers="clr-namespace:PID_r.GUI.Viewers"
+             mc:Ignorable="d" 
+             Height="450" Width="350" DataContext="{DynamicResource Viewer}">
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal"> 
+            <StackPanel MinWidth="100"  Orientation="Vertical" Margin="5" >
+                <Label Content="Детали"></Label>
+                <ListBox MinHeight="150" ItemsSource="{Binding Details}" HorizontalContentAlignment="Stretch"></ListBox>
+                <Button Content="Add new" Width="55" HorizontalAlignment="Right" Margin="5" Click="CreateDetail"></Button>
+            </StackPanel>
+            <StackPanel MinWidth="100" Orientation="Vertical" Margin="5">
+                <Label Content="Станки"></Label>
+                <ListBox x:Name="WorkbenchList" MinHeight="150" ItemsSource="{Binding Workbenches}" HorizontalContentAlignment="Stretch" MouseDoubleClick="WorkbenchListDoubleClicked"></ListBox>
+                <Button Content="Add new" Width="55" HorizontalAlignment="Right" Margin="5" Click="CreateWorkbecnh"></Button>
+            </StackPanel>
+        </StackPanel>
+        <ListBox MinHeight="50"></ListBox>
+    </StackPanel>
+    <Window.Resources>
+        <viewers:MainWindowsViewer x:Key="Viewer" x:Name="Viewer"></viewers:MainWindowsViewer>
+    </Window.Resources>
+</Window>

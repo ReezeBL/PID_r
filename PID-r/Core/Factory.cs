@@ -26,10 +26,17 @@ namespace PID_r.Core
         {
             int totalTime = 0;
             var detailToPlan = new Dictionary<Detail, DetailWorkplan>();
+            var factories = new HashSet<Workbench>(plans.SelectMany(plan => plan.PlanList));
+
             foreach (var plan in plans)
             {
                 detailToPlan[plan.Detail] = plan;
                 plan.NextWorkbenchIndex = 0;
+            }
+
+            while (plans.Any(plan => plan.NextWorkbench != null))
+            {
+                
             }
 
         }

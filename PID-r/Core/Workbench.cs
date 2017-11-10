@@ -1,10 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using PID_r.Annotations;
 
 namespace PID_r.Core
 {
-    internal class Workbench : IComparable<Workbench>
+    public class Workbench : IComparable<Workbench>, INotifyPropertyChanged
     {
         private Detail detailInWork;
+        private string type;
 
         public Workbench(string type)
         {
@@ -12,7 +16,17 @@ namespace PID_r.Core
             CachedType = type.GetHashCode();
         }
 
-        public string Type { get; }
+        public string Type
+        {
+            get => type;
+            set
+            {
+                if (value == type) return;
+                type = value;
+                OnPropertyChanged();
+            }
+        }
+
         private int CachedType { get; }
         public bool IsBusy => OrderTime > 0;
         public int OrderTime { get; private set; }
@@ -28,6 +42,8 @@ namespace PID_r.Core
 
         public Detail Tick(int time)
         {
+            if (!IsBusy)
+                return null;
             OrderTime -= time;
             return OrderTime <= 0 ? detailInWork : null;
         }
@@ -42,6 +58,14 @@ namespace PID_r.Core
             if (ReferenceEquals(this, other)) return 0;
             if (ReferenceEquals(null, other)) return 1;
             return CachedType.CompareTo(other.CachedType);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

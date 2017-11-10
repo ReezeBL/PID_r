@@ -2,7 +2,7 @@
 
 namespace PID_r.Core
 {
-    internal class Detail
+    public class Detail
     {
         private readonly Dictionary<Workbench, int> ordersDictionary = new Dictionary<Workbench, int>();
 
@@ -23,6 +23,11 @@ namespace PID_r.Core
         public void SetOrderTime(Workbench workbench, int time)
         {
             ordersDictionary[workbench] = time;
+        }
+
+        public override string ToString()
+        {
+            return Type;
         }
     }
 }
