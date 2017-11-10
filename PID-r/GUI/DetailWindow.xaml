@@ -4,18 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PID_r.GUI"
+             xmlns:viewers="clr-namespace:PID_r.GUI.Viewers"
              mc:Ignorable="d" 
-             Height="300" Width="300">
-   <StackPanel Margin="5">
-       <StackPanel Orientation="Horizontal" Margin="5">
-           <TextBlock FontSize="16">Название детали:</TextBlock>
-           <TextBox MinWidth="100" Margin="5,0,0,0"></TextBox>
-       </StackPanel>
-       <DataGrid>
-           <DataGrid.Columns>
-               <DataGridTextColumn Header="Станок"></DataGridTextColumn>
-               <DataGridTextColumn Header="Время обработки"></DataGridTextColumn>
-           </DataGrid.Columns>
-       </DataGrid>
-   </StackPanel>
+             Height="300" Width="300" DataContext="{DynamicResource Viewer}">
+    <StackPanel Margin="5">
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock FontSize="16" >Название детали:</TextBlock>
+            <TextBox MinWidth="100" Margin="5,0,0,0" Text="{Binding Name}"></TextBox>
+        </StackPanel>
+        <DataGrid CanUserAddRows="True" ItemsSource="{Binding WorkbenchDatas}" MinHeight="100" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn Header="Станок" SelectedValueBinding="{Binding Path=Workbench}" ItemsSource="{x:Static viewers:MainWindowsViewer.Workbenches}"/>
+                <DataGridTextColumn Header="Время обработки" Binding="{Binding Path=Worktime}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button HorizontalAlignment="Right" Margin="5,25,5,5" Click="OKClicked">OK</Button>
+    </StackPanel>
+    <Window.Resources>
+        <viewers:DetailViewer x:Key="Viewer"></viewers:DetailViewer>
+    </Window.Resources>
 </Window>
+
+
+

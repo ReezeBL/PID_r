@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using PID_r.Core;
+using PID_r.GUI.Viewers;
 
 namespace PID_r.GUI
 {
+    /// <inheritdoc cref="Window" />
     /// <summary>
     /// Логика взаимодействия для DetailWindow.xaml
     /// </summary>
-    public partial class DetailWindow : UserControl
+    public partial class DetailWindow
     {
-        public DetailWindow()
+        private readonly DetailViewer viewer;
+
+        public DetailWindow(Detail detail)
         {
             InitializeComponent();
+
+            viewer = new DetailViewer(detail);
+            DataContext = viewer;
+        }
+
+        private void OKClicked(object sender, RoutedEventArgs e)
+        {
+            viewer.FillDetail();
+            DialogResult = true;
         }
     }
 }

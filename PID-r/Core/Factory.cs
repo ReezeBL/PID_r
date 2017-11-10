@@ -4,7 +4,7 @@ using PID_r.Helpers;
 
 namespace PID_r.Core
 {
-    internal class Factory
+    public class Factory
     {
         private readonly List<Detail> details = new List<Detail>();
 

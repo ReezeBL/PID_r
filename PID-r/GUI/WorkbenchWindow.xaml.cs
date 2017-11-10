@@ -17,7 +17,7 @@ namespace PID_r.GUI
 
         private void Ok_Clicked(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            DialogResult = true;
         }
     }
 }

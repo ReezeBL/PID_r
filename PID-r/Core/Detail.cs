@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PID_r.Core
 {
@@ -11,7 +12,7 @@ namespace PID_r.Core
             Type = type;
         }
 
-        public string Type { get; }
+        public string Type { get; set; }
 
         public IReadOnlyDictionary<Workbench, int> OrdersDictionary => ordersDictionary;
 

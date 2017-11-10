@@ -10,12 +10,12 @@
         <StackPanel Orientation="Horizontal"> 
             <StackPanel MinWidth="100"  Orientation="Vertical" Margin="5" >
                 <Label Content="Детали"></Label>
-                <ListBox MinHeight="150" ItemsSource="{Binding Details}" HorizontalContentAlignment="Stretch"></ListBox>
+                <ListBox x:Name="DetailList" MinHeight="150" ItemsSource="{Binding Details}" HorizontalContentAlignment="Stretch" MouseDoubleClick="EditDetail"></ListBox>
                 <Button Content="Add new" Width="55" HorizontalAlignment="Right" Margin="5" Click="CreateDetail"></Button>
             </StackPanel>
             <StackPanel MinWidth="100" Orientation="Vertical" Margin="5">
                 <Label Content="Станки"></Label>
-                <ListBox x:Name="WorkbenchList" MinHeight="150" ItemsSource="{Binding Workbenches}" HorizontalContentAlignment="Stretch" MouseDoubleClick="WorkbenchListDoubleClicked"></ListBox>
+                <ListBox x:Name="WorkbenchList" MinHeight="150" ItemsSource="{Binding Workbenches}" HorizontalContentAlignment="Stretch" MouseDoubleClick="EditWorkbench"></ListBox>
                 <Button Content="Add new" Width="55" HorizontalAlignment="Right" Margin="5" Click="CreateWorkbecnh"></Button>
             </StackPanel>
         </StackPanel>

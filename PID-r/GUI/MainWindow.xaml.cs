@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using PID_r.Core;
@@ -15,7 +17,7 @@ namespace PID_r.GUI
             InitializeComponent();
         }
 
-        private void WorkbenchListDoubleClicked(object sender, MouseButtonEventArgs e)
+        private void EditWorkbench(object sender, MouseButtonEventArgs e)
         {
             var editWindow = new WorkbenchWindow((Workbench) WorkbenchList.SelectedItem);
             editWindow.ShowDialog();
@@ -24,8 +26,15 @@ namespace PID_r.GUI
 
         private void CreateDetail(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            var detail = new Detail("Empty Detail");
+            var editWindow = new DetailWindow(detail);
+            if (editWindow.ShowDialog() == true)
+            {
+                MainWindowsViewer.Details.Add(detail);
+            }
         }
+
+        
 
         private void CreateWorkbecnh(object sender, RoutedEventArgs e)
         {
@@ -33,8 +42,15 @@ namespace PID_r.GUI
             var editWindow = new WorkbenchWindow(workbench);
             if (editWindow.ShowDialog() == true)
             {
-                ((MainWindowsViewer)DataContext).Workbenches.Add(workbench);
+                MainWindowsViewer.Workbenches.Add(workbench);
             }
+        }
+
+        private void EditDetail(object sender, MouseButtonEventArgs e)
+        {
+            var editWindow = new DetailWindow((Detail)DetailList.SelectedItem);
+            editWindow.ShowDialog();
+            DetailList.Items.Refresh();
         }
     }
 }
