@@ -1,0 +1,21 @@
+﻿<Window x:Class="PID_r.GUI.DetailWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PID_r.GUI"
+             mc:Ignorable="d" 
+             Height="300" Width="300">
+   <StackPanel Margin="5">
+       <StackPanel Orientation="Horizontal" Margin="5">
+           <TextBlock FontSize="16">Название детали:</TextBlock>
+           <TextBox MinWidth="100" Margin="5,0,0,0"></TextBox>
+       </StackPanel>
+       <DataGrid>
+           <DataGrid.Columns>
+               <DataGridTextColumn Header="Станок"></DataGridTextColumn>
+               <DataGridTextColumn Header="Время обработки"></DataGridTextColumn>
+           </DataGrid.Columns>
+       </DataGrid>
+   </StackPanel>
+</Window>

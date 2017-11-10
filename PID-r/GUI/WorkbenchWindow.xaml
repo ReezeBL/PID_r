@@ -7,7 +7,7 @@
              Width="450" Height="110" ResizeMode="NoResize">
     <StackPanel Margin="5">
         <StackPanel Orientation="Horizontal" Margin="5">
-            <TextBlock VerticalAlignment="Center" FontSize="16">Название детали:</TextBlock>
+            <TextBlock VerticalAlignment="Center" FontSize="16">Название станка:</TextBlock>
             <TextBox MinWidth="150" Text="{Binding Type}"></TextBox>
         </StackPanel>
         <Button Content="OK" Width="25" HorizontalAlignment="Right" Click="Ok_Clicked"></Button>
