@@ -5,7 +5,7 @@ namespace PID_r.GUI.Viewers
 {
     public class MainWindowsViewer : AbsractViewer
     {
-        public static ObservableCollection<Detail> Details { get; } = new ObservableCollection<Detail> {new Detail("GOVNO 123213213213")};
-        public static ObservableCollection<Workbench> Workbenches { get; } = new ObservableCollection<Workbench>{ new Workbench("ZALUPA")};
+        public static ObservableCollection<Detail> Details { get; } = new ObservableCollection<Detail> {new Detail("Template Detail")};
+        public static ObservableCollection<Workbench> Workbenches { get; } = new ObservableCollection<Workbench>{ new Workbench("Template Workbench")};
     }
 }

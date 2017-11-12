@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewers="clr-namespace:PID_r.GUI.Viewers"
              mc:Ignorable="d" 
-             Height="450" Width="350" DataContext="{DynamicResource Viewer}">
+             Height="450" Width="350" DataContext="{DynamicResource Viewer}" ResizeMode="CanMinimize">
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal"> 
             <StackPanel MinWidth="100"  Orientation="Vertical" Margin="5" >
@@ -20,6 +20,7 @@
             </StackPanel>
         </StackPanel>
         <ListBox MinHeight="50"></ListBox>
+        <Button Click="Simulate">Simulate</Button>
     </StackPanel>
     <Window.Resources>
         <viewers:MainWindowsViewer x:Key="Viewer" x:Name="Viewer"></viewers:MainWindowsViewer>
