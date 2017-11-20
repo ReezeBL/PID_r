@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewers="clr-namespace:PID_r.GUI.Viewers"
              mc:Ignorable="d" 
-             Height="450" Width="350" DataContext="{DynamicResource Viewer}" ResizeMode="CanMinimize">
+             Height="450" Width="350" DataContext="{DynamicResource Viewer}" ResizeMode="CanMinimize" Style="{DynamicResource MainStyle}">
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal"> 
             <StackPanel MinWidth="100"  Orientation="Vertical" Margin="5" >
                 <Label Content="Детали"></Label>
                 <ListBox x:Name="DetailList" MinHeight="150" ItemsSource="{Binding Details}" HorizontalContentAlignment="Stretch" MouseDoubleClick="EditDetail"></ListBox>
-                <Button Content="Add new" Width="55" HorizontalAlignment="Right" Margin="5" Click="CreateDetail"></Button>
+                <Button Content="Add new" MinWidth="55" HorizontalAlignment="Right" Margin="5" Click="CreateDetail"></Button>
             </StackPanel>
             <StackPanel MinWidth="100" Orientation="Vertical" Margin="5">
                 <Label Content="Станки"></Label>
                 <ListBox x:Name="WorkbenchList" MinHeight="150" ItemsSource="{Binding Workbenches}" HorizontalContentAlignment="Stretch" MouseDoubleClick="EditWorkbench"></ListBox>
-                <Button Content="Add new" Width="55" HorizontalAlignment="Right" Margin="5" Click="CreateWorkbecnh"></Button>
+                <Button Content="Add new" MinWidth="55" HorizontalAlignment="Right" Margin="5" Click="CreateWorkbecnh"></Button>
             </StackPanel>
         </StackPanel>
         <ListBox MinHeight="50"></ListBox>
@@ -24,5 +24,9 @@
     </StackPanel>
     <Window.Resources>
         <viewers:MainWindowsViewer x:Key="Viewer" x:Name="Viewer"></viewers:MainWindowsViewer>
+        <Style x:Key="MainStyle">
+            <Setter Property="Control.FontFamily" Value="Times New Romans"></Setter>
+            <Setter Property="Control.FontSize" Value="16"></Setter>
+        </Style>
     </Window.Resources>
 </Window>

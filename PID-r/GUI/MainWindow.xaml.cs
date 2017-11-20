@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using PID_r.Core;
@@ -57,14 +55,19 @@ namespace PID_r.GUI
         private void Simulate(object sender, RoutedEventArgs e)
         {
             var optPlan = Factory.Simulate(MainWindowsViewer.Details, out int minTime, out int maxTime);
-            Console.WriteLine($"Minimal time: {minTime}");
-            Console.WriteLine($"Max time: {maxTime}");
-            Console.WriteLine($"Optimal plan:");
+            var stringBuilder = new StringBuilder(1024);
+
+            //stringBuilder.AppendLine($"Minimal time: {minTime}");
+            //stringBuilder.AppendLine($"Max time: {maxTime}");
+            //stringBuilder.AppendLine($"Optimal plan:");
             foreach (var detailWorkplan in optPlan)
             {
-                Console.Write($"Detail {detailWorkplan.Detail}: ");
-                Console.WriteLine(string.Join(" => ", detailWorkplan.PlanList));
+                stringBuilder.Append($"Станок {detailWorkplan.Key}: ");
+                stringBuilder.AppendLine(string.Join(" => ", detailWorkplan.Value));
             }
+
+            var resultsForm = new ResultsWindow(stringBuilder.ToString(), minTime, maxTime);
+            resultsForm.ShowDialog();
         }
     }
 }

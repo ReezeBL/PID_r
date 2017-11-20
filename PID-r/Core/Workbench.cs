@@ -31,13 +31,14 @@ namespace PID_r.Core
         public bool IsBusy => OrderTime > 0;
         public int OrderTime { get; private set; }
 
-        public void CreateOrder(Detail detail)
+        public int CreateOrder(Detail detail)
         {
             if(IsBusy)
                 throw new AccessViolationException("Current workbench is allready busy!");
 
             OrderTime += detail.GetOrderTime(this);
             detailInWork = detail;
+            return detail.GetOrderTime(this);
         }
 
         public Detail Tick(int time)

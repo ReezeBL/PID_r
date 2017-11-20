@@ -4,14 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d" 
-             Width="450" Height="110" ResizeMode="NoResize">
+             Width="450" Height="110" ResizeMode="NoResize" Style="{DynamicResource MainStyle}">
     <StackPanel Margin="5">
         <StackPanel Orientation="Horizontal" Margin="5">
             <TextBlock VerticalAlignment="Center" FontSize="16">Название станка:</TextBlock>
-            <TextBox MinWidth="150" Text="{Binding Type}"></TextBox>
+            <TextBox MinWidth="150" Text="{Binding Type}" Margin="10,0,0,0"></TextBox>
         </StackPanel>
         <Button Content="OK" Width="25" HorizontalAlignment="Right" Click="Ok_Clicked"></Button>
     </StackPanel>
+    <Window.Resources>
+        <Style x:Key="MainStyle">
+            <Setter Property="Control.FontFamily" Value="Times New Romans"></Setter>
+            <Setter Property="Control.FontSize" Value="16"></Setter>
+        </Style>
+    </Window.Resources>
 </Window>
 
 

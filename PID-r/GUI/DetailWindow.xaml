@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PID_r.GUI"
              xmlns:viewers="clr-namespace:PID_r.GUI.Viewers"
              mc:Ignorable="d" 
-             Height="300" Width="300" DataContext="{DynamicResource Viewer}">
+             Height="300" Width="300" DataContext="{DynamicResource Viewer}" Style="{DynamicResource MainStyle}">
     <StackPanel Margin="5">
         <StackPanel Orientation="Horizontal" Margin="5">
             <TextBlock FontSize="16" >Название детали:</TextBlock>
@@ -22,6 +22,10 @@
     </StackPanel>
     <Window.Resources>
         <viewers:DetailViewer x:Key="Viewer"></viewers:DetailViewer>
+        <Style x:Key="MainStyle">
+            <Setter Property="Control.FontFamily" Value="Times New Romans"></Setter>
+            <Setter Property="Control.FontSize" Value="16"></Setter>
+        </Style>
     </Window.Resources>
 </Window>
 
